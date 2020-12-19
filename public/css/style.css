@@ -9,6 +9,21 @@ body {
     overflow: hidden;
 }
 
+button {
+    float: left;
+    display: block;
+    color: rgba(184, 219, 217, 0.7);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: larger;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    padding: 3px;
+    border-style: solid;
+    border-radius: 3px;
+}
+
 /* navbar */
 
 .logo {
@@ -41,6 +56,10 @@ body {
     background-color: rgb(47, 69, 80);
     color: rgba(184, 219, 217);
     transition: 0.3s;
+}
+
+.topnav-link #login-link {
+    float: right;
 }
 
 /* columns */
@@ -165,4 +184,84 @@ body {
     .topnav-link {
         display: none;
     }
+}
+
+/* login */
+
+#login-form {
+    color: inherit;
+    margin: 5vh auto;
+    width: 300px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    background-color: rgb(214, 214, 214);
+}
+
+#login-form input {
+    width: 85%;
+    margin: 5px 15px;
+}
+
+#login-form button {
+    margin: 15px;
+}
+
+#login-form label {
+    margin: 15px 0 0 0;
+}
+
+#login-form #show-password {
+    margin: 5px 81% 0 0;
+    width: 5%;
+}
+
+#login-error {
+    color: red;
+}
+
+/* Compose */
+
+#compose-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 60vw;
+    height: 60vh;
+    border: solid;
+    padding: 5px;
+}
+
+#compose-form #title, #compose-form #text {
+    margin: 3px;
+    border: 3px solid rgb(185, 185, 185);
+    border-radius: 3px;
+}
+
+#compose-form #title {
+    width: 40%;
+}
+
+#compose-form #text {
+    width: 95%;
+    height: 60%;
+    padding: 0;
+    text-align: start;
+}
+
+#compose-form input:focus, #compose-form textarea:focus {
+    background-color: rgb(243, 243, 243);
+    border: 3px solid rgba(29, 29, 29, 0.2);
+}
+
+#compose-form button {
+    margin: 0 0 0 3px;
+    width: 75px;
+}
+
+#compose-form #error {
+    color: red;
 }

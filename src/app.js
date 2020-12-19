@@ -2,6 +2,10 @@ const express = require('express')
 const hbs = require('hbs')
 const path = require('path')
 const mainRouter = require('./routers/mainRouter')
+require('./db/mongoose')
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
+
 
 // initialize express app
 const app = express()
@@ -16,6 +20,11 @@ app.set('view engine', 'hbs') // set view engine to handlebars (hbs, since handl
 app.set('views', viewsDirectoryPath) // set view directory
 app.use(express.static(publicDirectoryPath)) // set public files directory
 hbs.registerPartials(partialsDirectoryPath) // register partials to be used by hbs
+
+// middleware
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 // routers
 app.use(mainRouter)

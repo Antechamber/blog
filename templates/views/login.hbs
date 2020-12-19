@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Log in</title>
+    {{> head}}
+</head>
+
+<body>
+    {{> topnav}}
+
+    <div class="row">
+        <div class="column" id="main-content-column">
+            <form id="login-form">
+                <h2>Log in:</h2>
+                <span id="login-error"></span>
+                <label for="email">Email</label>
+                <input id="email" type="text" name="email" placeholder="someone@notawebsite.com" required>
+                <label for="password">Password</label>
+                <input id="pass" type="password" name="password" placeholder="**********" required autocomplete="off">
+                <input id="show-password" type="checkbox" onclick="showPassword()">Show Password
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+        {{> linkscolumn }}
+    </div>
+</body>
+
+<script>
+    function showPassword() {
+        var x = document.getElementById("pass");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+<script src="/js/login.js"></script>
+
+</html>
