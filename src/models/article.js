@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const paginate = require('mongoose-paginate-v2')
 
 
 const articleSchema = new mongoose.Schema({
@@ -20,6 +21,8 @@ const articleSchema = new mongoose.Schema({
 }, {
     timestamps: true
 })
+
+articleSchema.plugin(paginate)
 
 const Article = mongoose.model('Article', articleSchema)
 

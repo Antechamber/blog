@@ -4,8 +4,8 @@ const error = document.querySelector('#error')
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    const title = document.querySelector('#title').textContent
-    const text = document.querySelector('#text').textContent
+    const title = document.querySelector('#title').value
+    const text = document.querySelector('#text').value
 
     fetch('/compose', {
         method: 'POST',

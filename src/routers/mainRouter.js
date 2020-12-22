@@ -3,6 +3,7 @@ const router = new express.Router()
 const Article = require('../models/article')
 const User = require('../models/user')
 const auth = require('../middleware/auth')
+const jwt = require('jsonwebtoken')
 
 
 // home
@@ -50,13 +51,37 @@ router.get('/compose', auth, async (req, res) => {
 router.post('/compose', auth, async (req, res) => {
     const article = new Article({
         ...req.body,
-        author: token
+        author: req.user._id
     })
     try {
         await article.save()
-        res.send(201)
+        res.sendStatus(201)
     } catch {
-        res.send(400)
+        res.sendStatus(400)
+    }
+})
+
+// blog
+router.get('/blog', (req, res) => {
+    var page = 1
+    var limit = 5
+    if (req.query.page) {
+        page = req.query.page
+    }
+    if (req.query.limit) {
+        limit = req.query.limit
+    }
+    try {
+        Article.paginate({}, {
+            page,
+            limit,
+            sort: { 'createdAt': -1 }
+        }).then((result) => {
+            console.log(result)
+            res.render('blog', result)
+        })
+    } catch {
+        res.sendStatus(500)
     }
 })
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blog | Brianday.dev</title>
+
+    {{> head}}
+</head>
+
+<body>
+
+    {{> topnav }}
+
+    <div class="row">
+        <div class="column" id="main-content-column">
+
+            {{#each docs }}
+
+            <div class="article-block">
+                <div class="article-header">
+                    <span class="title">{{ this.title }}</span>
+                    <span class="date">{{ moment this.createdAt "DD MMM YYYY"}}</span>
+                </div>
+                <p>{{ this.text }}</p>
+            </div>
+
+            {{/each}}
+
+        </div>
+
+        {{> linkscolumn }}
+
+    </div>
+
+</body>
+<script src="/js/blog.js"></script>
+
+</html>

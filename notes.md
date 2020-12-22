@@ -1,9 +1,10 @@
 create:
-    <!-- signup page -->
+    signup page
     compose page
-    login page
+    <!-- login page -->
     article rendering
         on index.hbs
+    projects
 
 test:
     composition

@@ -5,6 +5,7 @@ const mainRouter = require('./routers/mainRouter')
 require('./db/mongoose')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
+const momentHandler = require('handlebars.moment')
 
 
 // initialize express app
@@ -20,6 +21,9 @@ app.set('view engine', 'hbs') // set view engine to handlebars (hbs, since handl
 app.set('views', viewsDirectoryPath) // set view directory
 app.use(express.static(publicDirectoryPath)) // set public files directory
 hbs.registerPartials(partialsDirectoryPath) // register partials to be used by hbs
+
+// handlers
+momentHandler.registerHelpers(hbs)
 
 // middleware
 app.use(express.json())
