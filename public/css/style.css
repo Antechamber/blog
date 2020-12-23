@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    transition: 0.3s;
 }
 
 body {
@@ -55,10 +56,9 @@ button {
 .topnav-link a:hover {
     background-color: rgb(47, 69, 80);
     color: rgba(184, 219, 217);
-    transition: 0.3s;
 }
 
-.topnav-link #login-link {
+#login-link, #compose-link {
     float: right;
 }
 
@@ -118,6 +118,7 @@ button {
 #links-column a, #links-column a:visited {
     color: rgba(0, 0, 0, 0.8);
     text-decoration: none;
+    padding: 2px 0;
 }
 
 #links-column ul {

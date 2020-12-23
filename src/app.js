@@ -2,6 +2,8 @@ const express = require('express')
 const hbs = require('hbs')
 const path = require('path')
 const mainRouter = require('./routers/mainRouter')
+const userRouter = require('./routers/users')
+const blogRouter = require('./routers/blog')
 require('./db/mongoose')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
@@ -22,7 +24,7 @@ app.set('views', viewsDirectoryPath) // set view directory
 app.use(express.static(publicDirectoryPath)) // set public files directory
 hbs.registerPartials(partialsDirectoryPath) // register partials to be used by hbs
 
-// handlers
+// helpers
 momentHandler.registerHelpers(hbs)
 
 // middleware
@@ -32,6 +34,8 @@ app.use(cookieParser())
 
 // routers
 app.use(mainRouter)
+app.use(userRouter)
+app.use(blogRouter)
 
 
 module.exports = app

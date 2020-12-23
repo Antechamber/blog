@@ -13,145 +13,16 @@
     <div class="row">
         <div class="column" id="main-content-column">
 
+            <h1>Latest Article:</h1>
+            {{#each docs}}
             <div class="article-block">
                 <div class="article-header">
-                    <span class="title">React day one</span>
-                    <span class="date">12/16/2020</span>
+                    <span class="title">{{ this.title }}</span>
+                    <span class="date">{{ moment this.createdAt "DD MMM YYYY"}}</span>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.</p>
+                <p>{{{ this.text }}}</p>
             </div>
-            <div class="article-block">
-                <div class="article-header">
-                    <span class="title">React day one</span>
-                    <span class="date">12/16/2020</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus
-
-                    leo tdunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.
-
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tint eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, puru
-
-                    s leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.</p>
-            </div>
-            <div class="article-block">
-                <div class="article-header">
-                    <span class="title">React day one</span>
-                    <span class="date">12/16/2020</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus l
-
-                    eo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neLorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet
-                    pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec n
-
-                    s
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.que ultricies, eget elementum magna tristique. Quisque vehicula, risus
-                    eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.
-
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.L
-
-                    rem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit
-                    amet pretium urna. Vivamus
-                    venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget
-                    aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque
-                    tortor sed accumsan convallis.</p>
-            </div>
+            {{/each}}
         </div>
 
         {{> linkscolumn }}

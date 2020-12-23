@@ -10,7 +10,7 @@ loginForm.addEventListener('submit', (e) => {
     loginError.innerHTML = ''
 
     // attemp to log in with data
-    fetch('/login', {
+    fetch('/users/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', (e) => {
             response.json().then((data) => {
                 // add auth token to browser cookies
                 document.cookie = `Authorization=Bearer ${data.token}`
-                window.location.replace(window.location.href.replace('login', 'compose'))
+                window.location.replace(window.location.href.replace('users/login', 'blog/compose'))
             })
         } else {
             loginError.innerHTML = 'Invalid credentials. Please try again.'

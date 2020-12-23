@@ -7,7 +7,7 @@ form.addEventListener('submit', (e) => {
     const title = document.querySelector('#title').value
     const text = document.querySelector('#text').value
 
-    fetch('/compose', {
+    fetch('/blog/compose', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -18,7 +18,7 @@ form.addEventListener('submit', (e) => {
         })
     }).then((response) => {
         if (response.status === 201) {
-            window.location.replace(window.location.href.replace('compose', ''))
+            window.location.replace(window.location.href.replace('blog/compose', ''))
         } else {
             error.innerHTML = 'Error saving article...'
         }
