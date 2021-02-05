@@ -1,11 +1,6 @@
 const express = require('express')
 const router = new express.Router()
 const Article = require('../models/article')
-const User = require('../models/user')
-const auth = require('../middleware/auth')
-const jwt = require('jsonwebtoken')
-const mongoose = require('mongoose')
-
 
 // home
 router.get('/', async (req, res) => {
@@ -16,6 +11,11 @@ router.get('/', async (req, res) => {
         res.render('index', result)
     })
 
+})
+
+// projects
+router.get('/projects', async (req, res) => {
+    res.render('projects')
 })
 
 // links column

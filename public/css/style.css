@@ -25,6 +25,31 @@ button {
     border-radius: 3px;
 }
 
+/* Apps row */
+
+.apps-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 4px;
+    margin: 0 0 60px 0;
+}
+
+.apps-row img {
+    width: 300px;
+    border: solid 2px rgba(46, 46, 46, 0.877);
+    margin: 20px 0px;
+}
+
+.apps-row a, .apps-row a:hover {
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    margin: 0 30px;
+}
+
 /* navbar */
 
 .logo {
@@ -106,7 +131,7 @@ button {
 
 #links-column {
     width: 15vw;
-    /* background-color: rgba(127, 162, 182, 0.05); */
+    background-color: rgba(136, 136, 136, 0.151);
     height: 100vh;
     padding: 0 0 0 10px;
     overflow: hidden;
@@ -161,7 +186,7 @@ button {
 
 /* Responsive layout */
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1250px) {
     #links-column {
         display: none;
     }
@@ -174,10 +199,6 @@ button {
 @media screen and (max-width: 800px) {
     .column {
         width: 100%;
-    }
-    #main-content-column {
-        width: 100%;
-        padding: 5%;
     }
     #links-column {
         display: none;

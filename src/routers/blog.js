@@ -60,4 +60,27 @@ router.post('/blog/compose', auth, async (req, res) => {
     }
 })
 
+// update
+router.patch('/blog/compose', auth, async (req, res) => {
+    // get array of requested updates
+    const updates = Object.keys(req.body)
+    // array of accepted updates
+    const allowedUpdates = ['title', 'text']
+    // use array.every to check that callback function returns true for every array element
+    const isValidUpdate = updates.every((update) => allowedUpdates.includes(update))
+    // if any updates are not in allowedUpdates, return error and status code 400 (bad request)
+    if (!isValidUpdate) {
+        return res.status(400).send({ error: 'Invalid updates!' })
+    }
+    try {
+        // loop through updates array and apply all updates to user
+        updates.forEach((update) => req.updates[update] = req.body[update])
+        // asyncronously save user
+        await req.updates.save()
+        res.sendStatus(200)
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+
 module.exports = router

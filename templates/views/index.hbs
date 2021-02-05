@@ -14,6 +14,7 @@
         <div class="column" id="main-content-column">
 
             <h1>Latest Article:</h1>
+
             {{#each docs}}
             <div class="article-block">
                 <div class="article-header">
@@ -23,6 +24,11 @@
                 <p>{{{ this.text }}}</p>
             </div>
             {{/each}}
+
+            <h2>Recent projects:</h2>
+
+            {{> projects }}
+
         </div>
 
         {{> linkscolumn }}

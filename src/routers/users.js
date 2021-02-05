@@ -23,9 +23,10 @@ router.post('/users/signup', async (req, res) => {
 // login
 router.get('/users/login', auth, (req, res) => {
     if (req.user) {
-        res.render('compose')
+        res.redirect('/blog/compose')
+    } else {
+        res.render('login')
     }
-    res.render('login')
 })
 
 router.post('/users/login', async (req, res) => {
