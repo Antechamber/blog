@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 router.get('/blog', (req, res) => {
     var page = 1
     var limit = 5
+    // if page or limit are part of request (url string) then save that variable in router scope
     if (req.query.page) {
         page = req.query.page
     }
@@ -33,6 +34,7 @@ router.get('/blog', (req, res) => {
                 limit,
                 sort: { 'createdAt': -1 }
             }).then((result) => {
+                console.log(result)
                 res.render('blog', result)
             })
         } catch {
