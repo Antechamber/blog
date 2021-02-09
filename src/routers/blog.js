@@ -34,7 +34,6 @@ router.get('/blog', (req, res) => {
                 limit,
                 sort: { 'createdAt': -1 }
             }).then((result) => {
-                console.log(result)
                 res.render('blog', result)
             })
         } catch {

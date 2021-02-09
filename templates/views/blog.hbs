@@ -27,9 +27,9 @@
             {{/each}}
 
             <div class="blog-nav">
-                <button>Previous</button>
-                <p>{{ page }}</p>
-                <button>Next</button>
+                <button onclick="prevPage()" {{#unless hasPrevPage }}disabled{{/unless}}>Previous</button>
+                <p>{{ page }} / {{ totalPages }}</p>
+                <button onclick="nextPage()" {{#unless hasNextPage }}disabled{{/unless}}>Next</button>
             </div>
         </div>
 

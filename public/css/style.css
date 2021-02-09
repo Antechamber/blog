@@ -25,6 +25,11 @@ button {
     border-radius: 3px;
 }
 
+button:disabled {
+    color: black;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 /* Apps row */
 
 .apps-row {
