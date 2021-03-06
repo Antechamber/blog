@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Compose article</title>
+
+    {{> head }}
+</head>
+
+<body>
+    {{> topnav}}
+
+    <div class="row">
+
+        <div class="column" id="main-content-column">
+            <form id="compose-form">
+                <h2>Modify Article:</h2>
+
+                <label for="title">Title:</label>
+                <input id="title" type="text" name="title" required autocomplete="off">
+
+                <textarea id="text" type="text" align="top" name="text" required
+                    autocomplete="off">{{{ text }}}</textarea>
+
+                <button type="submit">Submit</button>
+                <span id="error"></span>
+            </form>
+        </div>
+
+        {{> linkscolumn }}
+    </div>
+</body>
+<script src="/js/updateArticle.js"></script>
+<script>
+    document.querySelector('#title').value = "{{ title }}"
+</script>
+
+</html>

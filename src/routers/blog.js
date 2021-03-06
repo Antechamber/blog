@@ -15,6 +15,7 @@ router.get('/blog', (req, res) => {
     if (req.query.limit) {
         limit = req.query.limit
     }
+    // if article id specified
     if (req.query.article && mongoose.isValidObjectId(req.query.article)) {
         try {
             Article.paginate({ '_id': req.query.article }, {
@@ -65,6 +66,7 @@ router.post('/blog/compose', auth, async (req, res) => {
 router.patch('/blog/compose', auth, async (req, res) => {
     // get array of requested updates
     const updates = Object.keys(req.body)
+    console.log(updates)
     // array of accepted updates
     const allowedUpdates = ['title', 'text']
     // use array.every to check that callback function returns true for every array element
@@ -74,13 +76,50 @@ router.patch('/blog/compose', auth, async (req, res) => {
         return res.status(400).send({ error: 'Invalid updates!' })
     }
     try {
+        const article = await Article.findOne({ _id: req.query.article })
+        if (!article) {
+            return res.status(404).send()
+        }
         // loop through updates array and apply all updates to user
-        updates.forEach((update) => req.updates[update] = req.body[update])
+        req.body.text = req.body.text.replace(/(?:\r\n|\r|\n)/g, '<br>')
+        updates.forEach((update) => article[update] = req.body[update])
         // asyncronously save user
-        await req.updates.save()
+        console.log('saving')
+        await article.save()
+        console.log('saved')
         res.sendStatus(200)
     } catch (e) {
         res.status(400).send(e)
+    }
+})
+
+router.get('/blog/updatearticle', auth, async (req, res) => {
+    const htmlToPlainText = (html) => {
+        html = html.replace(/<style([\s\S]*?)<\/style>/gi, '');
+        html = html.replace(/<script([\s\S]*?)<\/script>/gi, '');
+        html = html.replace(/<\/div>/ig, '\n');
+        html = html.replace(/<\/li>/ig, '\n');
+        html = html.replace(/<li>/ig, '  *  ');
+        html = html.replace(/<\/ul>/ig, '\n');
+        html = html.replace(/<\/p>/ig, '\n');
+        html = html.replace(/<br\s*[\/]?>/gi, "\n");
+        html = html.replace(/<[^>]+>/ig, '');
+        return html
+    }
+
+    if (req.query.article && mongoose.isValidObjectId(req.query.article)) {
+        try {
+            Article.paginate({ '_id': req.query.article }, {
+                limit: 1
+            }).then((result) => {
+                result.docs[0].text = htmlToPlainText(result.docs[0].text)
+                res.render('updateArticle', result.docs[0])
+            })
+        } catch {
+            res.status(500).send()
+        }
+    } else {
+        res.status(400).send()
     }
 })
 

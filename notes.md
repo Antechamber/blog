@@ -4,8 +4,10 @@ create:
     signup page (skip?)
     <!-- compose page -->
     <!-- login page -->
-    article rendering
-    projects
+    <!-- article rendering
+    projects -->
+    list of articles for logged in user with article edit links
+        -auth for the edit links has to include a unique script to make sure the editor was the original author or else an admin (aka me)
 
 test:
     <!-- composition -->

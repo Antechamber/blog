@@ -6,7 +6,7 @@
   "scripts": {
     "db-start": "/home/brian/mongodb-linux-x86_64-ubuntu2004-4.4.1/bin/mongod --dbpath=/home/brian/mongodb-data",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js -e js,css,hbs",
+    "dev": "concurrently \"npm run db-start\" \"env-cmd -f ./config/dev.env nodemon src/index.js -e js,css,hbs\"",
     "start": "node src/index.js"
   },
   "author": "",
@@ -26,6 +26,7 @@
     "validator": "^13.5.2"
   },
   "devDependencies": {
+    "concurrently": "^6.0.0",
     "env-cmd": "^10.1.0"
   }
 }
