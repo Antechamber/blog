@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Your Articles | Brianday.dev</title>
+
+    {{> head}}
+</head>
+
+<body>
+
+    {{> topnav }}
+
+    <div class="row">
+        <div class="column" id="main-content-column">
+
+            {{#each docs }}
+
+            <div class="article-block">
+                <div class="articles-by-author">
+                    <span class="title"><a href="/blog/updatearticle?article={{this._id}}">{{ this.title }}</a></span>
+                    <span class="date">{{ moment this.createdAt "DD MMM YYYY"}}</span>
+                </div>
+            </div>
+
+            {{/each}}
+
+            <div class="blog-nav">
+                <button onclick="prevPage()" {{#unless hasPrevPage }}disabled{{/unless}}>Previous</button>
+                <p>{{ page }} / {{ totalPages }}</p>
+                <button onclick="nextPage()" {{#unless hasNextPage }}disabled{{/unless}}>Next</button>
+            </div>
+        </div>
+
+        {{> linkscolumn }}
+
+    </div>
+
+</body>
+<script src="/js/blog.js"></script>
+
+</html>

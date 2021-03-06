@@ -43,6 +43,31 @@ router.get('/blog', (req, res) => {
     }
 })
 
+// articles by logged in author
+router.get('/blog/myarticles', auth, async (req, res) => {
+    var page = 1
+    var limit = 5
+    // if page or limit are part of request (url string) then save that variable in router scope
+    if (req.query.page) {
+        page = req.query.page
+    }
+    if (req.query.limit) {
+        limit = req.query.limit
+    }
+    try {
+        Article.paginate({ 'author': req.user._id }, {
+            page,
+            limit,
+            sort: { 'createdAt': -1 }
+        }).then((result) => {
+            console.log(result)
+            res.render('articlesByAuthor', result)
+        })
+    } catch {
+        res.sendStatus(500)
+    }
+})
+
 // compose
 router.get('/blog/compose', auth, async (req, res) => {
     res.render('compose')

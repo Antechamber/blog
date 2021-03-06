@@ -8,6 +8,7 @@ create:
     projects -->
     list of articles for logged in user with article edit links
         -auth for the edit links has to include a unique script to make sure the editor was the original author or else an admin (aka me)
+    make sure only author can delete or update articles
 
 test:
     <!-- composition -->

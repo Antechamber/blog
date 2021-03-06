@@ -132,6 +132,22 @@ button:disabled {
     padding: 30px 15% 8px 15%;
 }
 
+.articles-by-author {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.articles-by-author a, .articles-by-author a:visited {
+    text-decoration: none;
+    color: rgba(30, 30, 30);
+}
+
+.articles-by-author .date {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: small;
+    float: right;
+}
+
 /* blog page specific */
 
 .blog-nav {
