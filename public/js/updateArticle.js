@@ -20,7 +20,7 @@ form.addEventListener('submit', (e) => {
         })
     }).then((response) => {
         if (response.status === 200) {
-            window.location.replace(window.location.hostname + '/blog')
+            location.assign('/')
         } else {
             error.innerHTML = 'Error updating article...'
         }
