@@ -64,8 +64,9 @@ button:disabled {
 }
 
 .topnav {
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: rgb(0, 0, 0);
+    margin: 20px 0 0 0;
     padding: 0 0 0 10px;
 }
 
@@ -88,8 +89,32 @@ button:disabled {
     color: rgba(184, 219, 217);
 }
 
-#login-link, #compose-link {
+#login-link {
     float: right;
+}
+
+#topnav-actions-dropdown {
+    background-color: black;
+    float: right;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    right: 0;
+    top: 0p;
+    position: absolute;
+    min-width: 150px;
+}
+
+.topnav-actions-dropdown-content {
+    display: none;
+}
+
+#topnav-actions-dropdown:hover .topnav-actions-dropdown-content {
+    display: flex;
+    flex-direction: column;
 }
 
 /* columns */

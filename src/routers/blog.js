@@ -35,7 +35,7 @@ router.get('/blog', (req, res) => {
                 limit,
                 sort: { 'createdAt': -1 }
             }).then((result) => {
-                res.render('blog', result)
+                res.render('blog', { ...result })
             })
         } catch {
             res.sendStatus(500)
@@ -60,8 +60,7 @@ router.get('/blog/myarticles', auth, async (req, res) => {
             limit,
             sort: { 'createdAt': -1 }
         }).then((result) => {
-            console.log(result)
-            res.render('articlesByAuthor', result)
+            res.render('articlesByAuthor', { ...result })
         })
     } catch {
         res.sendStatus(500)

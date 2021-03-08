@@ -4,10 +4,12 @@ const path = require('path')
 const mainRouter = require('./routers/mainRouter')
 const userRouter = require('./routers/users')
 const blogRouter = require('./routers/blog')
+const errorRouter = require('./routers/errors')
 require('./db/mongoose')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const momentHandler = require('handlebars.moment')
+const isLoggedIn = require('./middleware/isLoggedIn')
 
 
 // initialize express app
@@ -26,16 +28,32 @@ hbs.registerPartials(partialsDirectoryPath) // register partials to be used by h
 
 // helpers
 momentHandler.registerHelpers(hbs)
+hbs.localsAsTemplateData(app)
 
 // middleware
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
+// define username if user is logged in
+app.use(async function (req, res, next) {
+    const username = await isLoggedIn(req, res, next)
+    if (!username) {
+        app.locals.username = undefined
+        return next()
+    }
+    if (username.length <= 15) {
+        app.locals.username = username
+    } else {
+        app.locals.username = username.slice(0, 15)
+    }
+    next()
+})
 
 // routers
 app.use(mainRouter)
 app.use(userRouter)
 app.use(blogRouter)
+app.use(errorRouter)
 
 
 module.exports = app

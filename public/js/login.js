@@ -23,8 +23,8 @@ loginForm.addEventListener('submit', (e) => {
         if (response.status === 200) {
             response.json().then((data) => {
                 // add auth token to browser cookies
-                document.cookie = `Authorization=Bearer ${data.token}`
-                window.location.replace(window.location.href.replace('users/login', 'blog/compose'))
+                document.cookie = `Authorization=Bearer ${data.token}; max-age=7200; path=/`
+                location.assign('/')
             })
         } else {
             loginError.innerHTML = 'Invalid credentials. Please try again.'

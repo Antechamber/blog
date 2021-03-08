@@ -3,10 +3,33 @@
         <img src="/img/logo.png" alt="Brian Day" class="logo">
     </a>
     <div class="topnav-link">
+
         <a href="/blog">Blog</a>
         <a href="/projects">Projects</a>
         <a href="https://github.com/Antechamber">github</a>
-        <a id="compose-link" href="/blog/compose">New article</a>
+
+        {{#if username}}
+        <ul id="topnav-actions-dropdown">
+            <a href="/blog/myarticles">
+                <li>{{ username }}</li>
+            </a>
+            <div class="topnav-actions-dropdown-content">
+                <a href="/blog/compose">
+                    <li>New Article</li>
+                </a>
+                <a class="topnav-actions-dropdown-content" href="/blog/myarticles">
+                    <li>My Articles</li>
+                </a>
+                <a class="topnav-actions-dropdown-content" onclick="logout()" href="/">
+                    <li>Log Out</li>
+                </a>
+            </div>
+        </ul>
+        {{ else }}
+
         <a id="login-link" href="/users/login">Log in</a>
+
+        {{/if}}
     </div>
 </div>
+<script src="/js/logout.js"></script>
