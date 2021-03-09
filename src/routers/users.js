@@ -1,7 +1,6 @@
 const express = require('express')
 const router = new express.Router()
 const User = require('../models/user')
-const auth = require('../middleware/auth')
 
 
 // create/sign up
@@ -21,12 +20,8 @@ router.post('/users/signup', async (req, res) => {
 })
 
 // login
-router.get('/users/login', auth, (req, res) => {
-    if (req.user) {
-        res.redirect('/blog/compose')
-    } else {
-        res.render('login')
-    }
+router.get('/users/login', (req, res) => {
+    res.render('login')
 })
 
 router.post('/users/login', async (req, res) => {

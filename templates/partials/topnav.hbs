@@ -10,7 +10,7 @@
 
         {{#if username}}
         <ul id="topnav-actions-dropdown">
-            <a href="/blog/myarticles">
+            <a>
                 <li>{{ username }}</li>
             </a>
             <div class="topnav-actions-dropdown-content">
@@ -25,6 +25,7 @@
                 </a>
             </div>
         </ul>
+        <script src="/js/showMenu.js"></script>
         {{ else }}
 
         <a id="login-link" href="/users/login">Log in</a>

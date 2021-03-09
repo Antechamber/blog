@@ -2,7 +2,6 @@ const urlParams = new URLSearchParams(window.location.search)
 const currentPage = parseInt(urlParams.get('page'), 10)
 
 const nextPage = () => {
-    console.log('test')
     if (currentPage) {
         location.assign(window.location.href.replace(`page=${currentPage}`, `page=${currentPage + 1}`))
     } else {

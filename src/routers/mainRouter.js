@@ -33,7 +33,6 @@ router.get('/links', (req, res) => {
                     title: doc['title']
                 })
             })
-            console.log(response)
             res.send('yo')
         })
     } catch {

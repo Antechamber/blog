@@ -111,12 +111,13 @@ button:disabled {
 
 .topnav-actions-dropdown-content {
     display: none;
+    flex-direction: column;
+    height: fit-content;
 }
 
-#topnav-actions-dropdown:hover .topnav-actions-dropdown-content {
+/* #topnav-actions-dropdown:focus .topnav-actions-dropdown-content {
     display: flex;
-    flex-direction: column;
-}
+} */
 
 /* columns */
 
