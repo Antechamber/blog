@@ -9,13 +9,13 @@ create:
     list of articles for logged in user with article edit links
         -auth for the edit links has to include a unique script to make sure the editor was the original author or else an admin (aka me)
         -make sure only author can delete or update articles
-    update top nav to:
+    <!-- update top nav to:
         -display 'Log In' if no Auth token present
         -display user's name if token present
         -dropdown on hover with:
-            >'My Articles'
-            >'New Article'
-            >'Log Out'
+            +'My Articles'
+            +'New Article'
+            +'Log Out' -->
     page change buttons on blog page
 
 test:

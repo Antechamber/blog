@@ -24,6 +24,7 @@ loginForm.addEventListener('submit', (e) => {
             response.json().then((data) => {
                 // add auth token to browser cookies
                 document.cookie = `Authorization=Bearer ${data.token}; max-age=7200; path=/`
+                // redirect to home page
                 location.assign('/')
             })
         } else {

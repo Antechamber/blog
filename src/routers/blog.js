@@ -90,7 +90,6 @@ router.post('/blog/compose', auth, async (req, res) => {
 router.patch('/blog/compose', auth, async (req, res) => {
     // get array of requested updates
     const updates = Object.keys(req.body)
-    console.log(updates)
     // array of accepted updates
     const allowedUpdates = ['title', 'text']
     // use array.every to check that callback function returns true for every array element
@@ -104,13 +103,14 @@ router.patch('/blog/compose', auth, async (req, res) => {
         if (!article) {
             return res.status(404).send()
         }
+        if (String(req.user._id) != String(article.author)) {
+            throw new Error('You are not the author of this article')
+        }
         // loop through updates array and apply all updates to user
         req.body.text = req.body.text.replace(/(?:\r\n|\r|\n)/g, '<br>')
         updates.forEach((update) => article[update] = req.body[update])
         // asyncronously save user
-        console.log('saving')
         await article.save()
-        console.log('saved')
         res.sendStatus(200)
     } catch (e) {
         res.status(400).send(e)
@@ -145,6 +145,20 @@ router.get('/blog/updatearticle', auth, async (req, res) => {
     } else {
         res.status(400).send()
     }
+})
+
+router.delete('/blog/deletearticle', auth, async (req, res) => {
+    const article = await Article.findOne({ _id: req.query.article })
+    try {
+        if (String(req.user._id) != String(article.author)) {
+            throw new Error('You are not the author of this article')
+        }
+        await Article.findOneAndDelete({ _id: req.query.article })
+        res.status(200).send()
+    } catch (e) {
+        res.status(400).send(e)
+    }
+
 })
 
 module.exports = router

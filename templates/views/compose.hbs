@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <title>Compose article</title>
-
     {{> head }}
+    <title>Compose article</title>
+    <link rel='stylesheet' type='text/css' href='/css/compose.css'>
 </head>
 
 <body>
@@ -23,8 +23,11 @@
                     placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit." required
                     autocomplete="off"></textarea>
 
-                <button type="submit">Submit</button>
                 <span id="error"></span>
+
+                <div id="compose-form-button-container">
+                    <button type="submit" value="submit">Submit</button>
+                </div>
             </form>
         </div>
 

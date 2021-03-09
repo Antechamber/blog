@@ -23,6 +23,7 @@ button {
     padding: 3px;
     border-style: solid;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 button:disabled {
@@ -157,32 +158,6 @@ button:disabled {
     padding: 30px 15% 8px 15%;
 }
 
-.articles-by-author {
-    font-size: 20px;
-    margin: 10px 0;
-}
-
-.articles-by-author a, .articles-by-author a:visited {
-    text-decoration: none;
-    color: rgba(30, 30, 30);
-}
-
-.articles-by-author .date {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: small;
-    float: right;
-}
-
-/* blog page specific */
-
-.blog-nav {
-    display: flex;
-    justify-content: space-between;
-    align-content: flex-start;
-    color: rgba(30, 30, 30);
-    margin: 0 0 50px 0;
-}
-
 /* right side links column */
 
 #links-column {
@@ -262,84 +237,4 @@ button:disabled {
     .topnav-link {
         display: none;
     }
-}
-
-/* login */
-
-#login-form {
-    color: inherit;
-    margin: 5vh auto;
-    width: 300px;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0;
-    background-color: rgb(214, 214, 214);
-}
-
-#login-form input {
-    width: 85%;
-    margin: 5px 15px;
-}
-
-#login-form button {
-    margin: 15px;
-}
-
-#login-form label {
-    margin: 15px 0 0 0;
-}
-
-#login-form #show-password {
-    margin: 5px 81% 0 0;
-    width: 5%;
-}
-
-#login-error {
-    color: red;
-}
-
-/* Compose */
-
-#compose-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    width: 60vw;
-    height: 60vh;
-    border: solid;
-    padding: 5px;
-}
-
-#compose-form #title, #compose-form #text {
-    margin: 3px;
-    border: 3px solid rgb(185, 185, 185);
-    border-radius: 3px;
-}
-
-#compose-form #title {
-    width: 40%;
-}
-
-#compose-form #text {
-    width: 95%;
-    height: 60%;
-    padding: 0;
-    text-align: start;
-}
-
-#compose-form input:focus, #compose-form textarea:focus {
-    background-color: rgb(243, 243, 243);
-    border: 3px solid rgba(29, 29, 29, 0.2);
-}
-
-#compose-form button {
-    margin: 0 0 0 3px;
-    width: 75px;
-}
-
-#compose-form #error {
-    color: red;
 }

@@ -26,3 +26,18 @@ form.addEventListener('submit', (e) => {
         }
     })
 })
+
+const deleteArticle = () => {
+    fetch('/blog/deletearticle?article=' + articleID, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then((response) => {
+        if (response.status === 200) {
+            location.assign('/blog/myarticles')
+        } else {
+            error.innerHTML = "Couldn't delete article..."
+        }
+    })
+}

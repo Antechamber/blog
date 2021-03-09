@@ -2,8 +2,9 @@
 <html>
 
 <head>
+    {{> head }}
     <title>Log in | Brianday.dev</title>
-    {{> head}}
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 
 <body>
@@ -28,11 +29,11 @@
 
 <script>
     function showPassword() {
-        var x = document.getElementById("pass");
-        if (x.type === "password") {
-            x.type = "text";
+        var pass = document.getElementById("pass");
+        if (pass.type === "password") {
+            pass.type = "text";
         } else {
-            x.type = "password";
+            pass.type = "password";
         }
     }
 </script>

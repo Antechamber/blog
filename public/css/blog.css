@@ -1,0 +1,9 @@
+/* blog page specific */
+
+.blog-nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    color: rgba(30, 30, 30);
+    margin: 0 0 50px 0;
+}

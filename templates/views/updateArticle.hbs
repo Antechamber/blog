@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <title>Modify article | Brianday.dev</title>
-
     {{> head }}
+    <title>Modify article | Brianday.dev</title>
+    <link rel='stylesheet' type='text/css' href='/css/compose.css'>
 </head>
 
 <body>
@@ -21,9 +21,12 @@
 
                 <textarea id="text" type="text" align="top" name="text" required
                     autocomplete="off">{{{ text }}}</textarea>
-
-                <button type="submit">Submit</button>
                 <span id="error"></span>
+                <div id="compose-form-button-container">
+                    <button type="submit" value="submit">Submit</button>
+                    <button id="button-article-delete" onclick="deleteArticle()" type="button" value="delete">DELETE
+                        ARTICLE</button>
+                </div>
             </form>
         </div>
 

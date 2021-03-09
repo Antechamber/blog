@@ -1,0 +1,36 @@
+/* login */
+
+#login-form {
+    color: inherit;
+    margin: 5vh auto;
+    width: 300px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    background-color: rgb(214, 214, 214);
+}
+
+#login-form input {
+    width: 85%;
+    margin: 5px 15px;
+}
+
+#login-form button {
+    margin: 15px;
+}
+
+#login-form label {
+    margin: 15px 0 0 0;
+}
+
+#login-form #show-password {
+    margin: 5px 81% 0 0;
+    width: 5%;
+}
+
+#login-error {
+    color: red;
+}

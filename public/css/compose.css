@@ -1,0 +1,60 @@
+/* Composition form */
+
+#compose-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 60vw;
+    height: 60vh;
+    border: solid;
+    padding: 5px;
+}
+
+#compose-form #title, #compose-form #text {
+    margin: 3px;
+    border: 3px solid rgb(185, 185, 185);
+    border-radius: 3px;
+}
+
+#compose-form #title {
+    width: 40%;
+}
+
+#compose-form #text {
+    width: 99%;
+    height: 60%;
+    padding: 0;
+    text-align: start;
+}
+
+#compose-form input:focus, #compose-form textarea:focus {
+    background-color: rgb(243, 243, 243);
+    border: 3px solid rgba(29, 29, 29, 0.2);
+}
+
+#compose-form-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    width: 99%;
+    padding: 10px 0 0 0;
+}
+
+#compose-form button {
+    margin: 0 0 0 3px;
+    width: 75px;
+}
+
+#compose-form #error {
+    color: red;
+}
+
+#button-article-delete {
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 0, 0, 0.377);
+    width: fit-content !important;
+}
+
+#button-article-delete:hover {
+    background-color: rgb(209, 3, 3);
+}
