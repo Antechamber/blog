@@ -16,7 +16,7 @@ const auth = async (req, res, next) => {
         if (!user) {
             throw new Error()
         }
-
+        // attach token and user object to req and pass to router
         req.token = token
         req.user = user
         next()

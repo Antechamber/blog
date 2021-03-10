@@ -19,10 +19,12 @@
             {{#each docs }}
 
             <div class="article-block">
-                <div class="articles-by-author">
-                    <span class="title"><a href="/blog/updatearticle?article={{this._id}}">{{ this.title }}</a></span>
-                    <span class="date">{{ moment this.createdAt "DD MMM YYYY"}}</span>
-                </div>
+                <a href="/blog/updatearticle?article={{this._id}}">
+                    <div class="articles-by-author">
+                        <span class="title">{{ this.title }}</span>
+                        <span class="date">{{ moment this.createdAt "DD MMM YYYY"}}</span>
+                    </div>
+                </a>
             </div>
 
             {{/each}}

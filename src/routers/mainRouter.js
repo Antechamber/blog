@@ -4,6 +4,7 @@ const Article = require('../models/article')
 
 // home
 router.get('/', async (req, res) => {
+    // find most recently created article and give to 'index' template
     Article.paginate({}, {
         limit: 1,
         sort: { 'createdAt': -1 }
@@ -16,28 +17,6 @@ router.get('/', async (req, res) => {
 // projects
 router.get('/projects', async (req, res) => {
     res.render('projects')
-})
-
-// links column
-router.get('/links', (req, res) => {
-    try {
-        Article.paginate({}, {
-            limit: 100,
-            sort: { 'createdAt': -1 }
-        }).then((result) => {
-            var response = []
-            result.docs.forEach((doc) => {
-                response = response.concat({
-                    _id: doc['_id'],
-                    createdAt: doc['createdAt'],
-                    title: doc['title']
-                })
-            })
-            res.send('yo')
-        })
-    } catch {
-        res.sendStatus(500)
-    }
 })
 
 module.exports = router

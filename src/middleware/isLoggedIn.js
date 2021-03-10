@@ -15,6 +15,7 @@ const isLoggedIn = async (req, res, next) => {
         if (!user) {
             throw new Error()
         }
+        // return username for use in top right dropdown menu
         return user.name
     } catch (e) {
         return

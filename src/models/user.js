@@ -77,6 +77,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
     if (!user) {
         throw new Error('Unable to log in. Plaese try again.')
     }
+    // compare given password with found user's with bcrypt
     const isMatchingPass = await bcrypt.compare(password, user.password)
     if (!isMatchingPass) {
         throw new Error('Unable to log in. Please try again.')
@@ -84,7 +85,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
     return user
 }
 
-// user specific middleware
+// user specific middleware (runs before 'save' method is run on a User object)
 // hash plain text password before saving
 userSchema.pre('save', async function (next) {
     const user = this
@@ -97,7 +98,7 @@ userSchema.pre('save', async function (next) {
     next()
 })
 
-// delete a user's tasks when deleting user
+// delete a user's articles when deleting user
 userSchema.pre('remove', async function (next) {
     const user = this
     await Article.deleteMany({ author: user._id })

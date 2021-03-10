@@ -22,6 +22,7 @@ const articleSchema = new mongoose.Schema({
     timestamps: true
 })
 
+// external pagination module
 articleSchema.plugin(paginate)
 
 const Article = mongoose.model('Article', articleSchema)

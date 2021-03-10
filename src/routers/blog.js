@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 router.get('/blog', (req, res) => {
     var page = 1
     var limit = 5
-    // if page or limit are part of request (url string) then save that variable in router scope
+    // if page or limit are part of request.query (after '?' in url) then save that variable in router scope
     if (req.query.page) {
         page = req.query.page
     }
@@ -17,6 +17,7 @@ router.get('/blog', (req, res) => {
     }
     // if article id specified
     if (req.query.article && mongoose.isValidObjectId(req.query.article)) {
+        // generate first 1 (limit) articles with matching '_id' property, sorted descending by createdAt
         try {
             Article.paginate({ '_id': req.query.article }, {
                 page,
@@ -30,6 +31,7 @@ router.get('/blog', (req, res) => {
         }
     } else {
         try {
+            // generate first article sorted descending by 'createdAt'
             Article.paginate({}, {
                 page,
                 limit,
@@ -54,6 +56,7 @@ router.get('/blog/myarticles', auth, async (req, res) => {
     if (req.query.limit) {
         limit = req.query.limit
     }
+    // find articles with authenticated user's '_id'
     try {
         Article.paginate({ 'author': req.user._id }, {
             page,
@@ -73,6 +76,7 @@ router.get('/blog/compose', auth, async (req, res) => {
 })
 
 router.post('/blog/compose', auth, async (req, res) => {
+    // replace returns with <br>
     req.body.text = req.body.text.replace(/(?:\r\n|\r|\n)/g, '<br>')
     const article = new Article({
         ...req.body,
@@ -88,7 +92,7 @@ router.post('/blog/compose', auth, async (req, res) => {
 
 // update
 router.patch('/blog/compose', auth, async (req, res) => {
-    // get array of requested updates
+    // get array of requested updates, and save as new object
     const updates = Object.keys(req.body)
     // array of accepted updates
     const allowedUpdates = ['title', 'text']
@@ -100,16 +104,18 @@ router.patch('/blog/compose', auth, async (req, res) => {
     }
     try {
         const article = await Article.findOne({ _id: req.query.article })
+        // if article with given id doesn't exist send error
         if (!article) {
-            return res.status(404).send()
+            return res.status(400).send()
         }
+        // if authenticated user's '_id' doesn't match article '_id', send error
         if (String(req.user._id) != String(article.author)) {
-            throw new Error('You are not the author of this article')
+            throw new Error('User is not the author of this article')
         }
         // loop through updates array and apply all updates to user
         req.body.text = req.body.text.replace(/(?:\r\n|\r|\n)/g, '<br>')
         updates.forEach((update) => article[update] = req.body[update])
-        // asyncronously save user
+        // save user
         await article.save()
         res.sendStatus(200)
     } catch (e) {
@@ -118,6 +124,7 @@ router.patch('/blog/compose', auth, async (req, res) => {
 })
 
 router.get('/blog/updatearticle', auth, async (req, res) => {
+    // format article from db to display nicely in textbox
     const htmlToPlainText = (html) => {
         html = html.replace(/<style([\s\S]*?)<\/style>/gi, '');
         html = html.replace(/<script([\s\S]*?)<\/script>/gi, '');
@@ -130,7 +137,8 @@ router.get('/blog/updatearticle', auth, async (req, res) => {
         html = html.replace(/<[^>]+>/ig, '');
         return html
     }
-
+    // make sure that the arcicle id exists and is valid, then find matching article
+    // and hand to 'updateArticle' template
     if (req.query.article && mongoose.isValidObjectId(req.query.article)) {
         try {
             Article.paginate({ '_id': req.query.article }, {
@@ -140,6 +148,7 @@ router.get('/blog/updatearticle', auth, async (req, res) => {
                 res.render('updateArticle', result.docs[0])
             })
         } catch {
+            // if this code is reached, the error must be on the server side
             res.status(500).send()
         }
     } else {
@@ -148,8 +157,10 @@ router.get('/blog/updatearticle', auth, async (req, res) => {
 })
 
 router.delete('/blog/deletearticle', auth, async (req, res) => {
+    // find article
     const article = await Article.findOne({ _id: req.query.article })
     try {
+        // make sure authenticated user is the author
         if (String(req.user._id) != String(article.author)) {
             throw new Error('You are not the author of this article')
         }

@@ -15,7 +15,7 @@ const isLoggedIn = require('./middleware/isLoggedIn')
 // initialize express app
 const app = express()
 
-// express config
+// express config path names
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsDirectoryPath = path.join(__dirname, '../templates/views')
 const partialsDirectoryPath = path.join(__dirname, '../templates/partials')
@@ -27,20 +27,22 @@ app.use(express.static(publicDirectoryPath)) // set public files directory
 hbs.registerPartials(partialsDirectoryPath) // register partials to be used by hbs
 
 // helpers
-momentHandler.registerHelpers(hbs)
-hbs.localsAsTemplateData(app)
+momentHandler.registerHelpers(hbs) // for handling dates
+hbs.localsAsTemplateData(app) // for storing app.local.[varName] variables for global access in views as {{[varName]}}
 
 // middleware
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser())
+app.use(cookieParser()) // for storing and reading cookies; for authentication
 // define username if user is logged in
 app.use(async function (req, res, next) {
+    // check if current auth token exists and is valid
     const username = await isLoggedIn(req, res, next)
     if (!username) {
         app.locals.username = undefined
         return next()
     }
+    // if username found, shorten if necessary and store as local variable for templates
     if (username.length <= 15) {
         app.locals.username = username
     } else {

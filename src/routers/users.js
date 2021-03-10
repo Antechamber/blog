@@ -9,6 +9,7 @@ router.get('/users/signup', (req, res) => {
 })
 
 router.post('/users/signup', async (req, res) => {
+    // get new user info from req.body
     const user = new User(req.body)
     try {
         await user.save()
@@ -26,7 +27,10 @@ router.get('/users/login', (req, res) => {
 
 router.post('/users/login', async (req, res) => {
     try {
+        // try to find user matching credentials provided through req.body
         const user = await User.findByCredentials(req.body.email, req.body.password)
+        // generate auth token for logged in user and hand back to client to be stored as cookie
+        // via login.js
         const token = await user.generateAuthToken()
         res.send({ user, token })
     } catch (e) {

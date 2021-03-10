@@ -3,7 +3,7 @@
     margin: 10px 0;
 }
 
-.articles-by-author a, .articles-by-author a:visited {
+.article-block a, .article-block a:visited {
     text-decoration: none;
     color: rgba(30, 30, 30);
 }
@@ -12,4 +12,8 @@
     color: rgba(0, 0, 0, 0.5);
     font-size: small;
     float: right;
+}
+
+.article-block:hover {
+    background-color: rgba(136, 136, 136, 0.151);
 }
