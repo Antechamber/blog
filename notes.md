@@ -6,9 +6,9 @@ create:
     <!-- login page -->
     <!-- article rendering
     projects -->
-    list of articles for logged in user with article edit links
+    <!-- list of articles for logged in user with article edit links
         -auth for the edit links has to include a unique script to make sure the editor was the original author or else an admin (aka me)
-        -make sure only author can delete or update articles
+        -make sure only author can delete or update articles -->
     <!-- update top nav to:
         -display 'Log In' if no Auth token present
         -display user's name if token present
