@@ -9,6 +9,7 @@ form.addEventListener('submit', (e) => {
     const title = document.querySelector('#title').value
     const text = document.querySelector('#text').value
 
+    // send form data to server in a PATCH request to update article in the DB
     fetch('/blog/compose?article=' + articleID, {
         method: 'PATCH',
         headers: {
@@ -27,6 +28,7 @@ form.addEventListener('submit', (e) => {
     })
 })
 
+// send DELETE request to remove record from the DB
 const deleteArticle = () => {
     fetch('/blog/deletearticle?article=' + articleID, {
         method: 'DELETE',

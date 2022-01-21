@@ -48,21 +48,27 @@ const userSchema = new mongoose.Schema({
 })
 
 // virtual props
+// adds a virtual prop to the user scheme. This way, all of a user's articles can be populated into a field on the User instance
 userSchema.virtual('articles', {
     ref: 'Article',
     localField: '_id',
     foreignField: 'author'
 })
 
-// methods
+// METHODS
+
+// creates a token containing encrypted user id and expiration date 
 userSchema.methods.generateAuthToken = async function () {
     const user = this
     const token = jwt.sign({ _id: user.id.toString() }, process.env.JWT_SECRET, { expiresIn: '2 hours' })
     user.tokens = user.tokens.concat({ token })
+    // save generated token from current instance of User to the record in the DB
     await user.save()
+    // reutrn token to be saved as a browser cookie
     return token
 }
 
+// creates sanitized version of user object with private info removed
 userSchema.methods.toJSON = function () {
     const user = this
     const userPublicInfo = user.toObject()
@@ -72,6 +78,8 @@ userSchema.methods.toJSON = function () {
     return userPublicInfo
 }
 
+
+// lookup user based on provided credentials
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email })
     if (!user) {
@@ -85,7 +93,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
     return user
 }
 
-// user specific middleware (runs before 'save' method is run on a User object)
+// user specific middleware (runs when 'save' method called but before it 'save' runs)
 // hash plain text password before saving
 userSchema.pre('save', async function (next) {
     const user = this

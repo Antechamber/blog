@@ -5,6 +5,7 @@ const mainRouter = require('./routers/mainRouter')
 const userRouter = require('./routers/users')
 const blogRouter = require('./routers/blog')
 const errorRouter = require('./routers/errors')
+const projectRouter = require('./routers/projects')
 require('./db/mongoose')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
@@ -55,6 +56,7 @@ app.use(async function (req, res, next) {
 app.use(mainRouter)
 app.use(userRouter)
 app.use(blogRouter)
+app.use(projectRouter)
 app.use(errorRouter)
 
 

@@ -14,9 +14,9 @@ router.get('/', async (req, res) => {
 
 })
 
-// projects
-router.get('/projects', async (req, res) => {
-    res.render('projects')
-})
+// // projects
+// router.get('/projects', async (req, res) => {
+//     res.render('projects')
+// })
 
 module.exports = router

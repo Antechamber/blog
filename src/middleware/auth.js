@@ -1,3 +1,7 @@
+// This module validates an existing session as being both valid to an existing user in the DB as well as not past it's expiration date
+// cookies are expected to be of the form 'Authorization: Bearer {TOKEN}'
+
+// jwt decodes hashed values, needs to be given the secret
 const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 
@@ -21,6 +25,7 @@ const auth = async (req, res, next) => {
         req.user = user
         next()
     } catch (e) {
+        // if any part of auth fails, return user to login page
         res.status(401).render('login')
     }
 }

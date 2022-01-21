@@ -34,6 +34,7 @@ router.post('/users/login', async (req, res) => {
         const token = await user.generateAuthToken()
         res.send({ user, token })
     } catch (e) {
+        // if User.findByCredentials fails to locate a User, then an error is thrown and status 400 sent back to client
         res.status(400).send()
     }
 })

@@ -1,5 +1,6 @@
 const loginForm = document.querySelector('#login-form')
 
+// listen for form submission
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault()
     // get data
@@ -7,9 +8,11 @@ loginForm.addEventListener('submit', (e) => {
     const pass = document.querySelector('#pass').value
     const loginError = document.querySelector('#login-error')
 
+    // clear the loginError field once new data has been submitted (i.e. there has been a new login attempt)
     loginError.innerHTML = ''
 
-    // attemp to log in with data
+    // attempt to log in with data. send POST request to server with credentials.
+    //  src/routers/users.js handles the validation of this request against the hashed value in the mongo database.
     fetch('/users/login', {
         method: 'POST',
         headers: {
